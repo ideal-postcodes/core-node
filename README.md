@@ -15,8 +15,9 @@
 
 ## Links
 
-- [Installation and Configuration](#installation-and-configuration)
+- [Configuration & Usage](#configuration-&-usage)
 - [Quickstart](#quickstart)
+- [Client Documentation](https://core-interface.ideal-postcodes.dev/#documentation)
 - [Core API Documentation](https://core-interface.ideal-postcodes.dev/)
 - [Core Node Documentation](https://core-node.ideal-postcodes.dev/)
 - [npm Module](https://www.npmjs.com/package/@ideal-postcodes/core-node)
@@ -29,32 +30,50 @@
 
 ## Documentation
 
-### Configuration
+### Configuration & Usage
+
+Install
 
 ```bash
 npm install @ideal-postcodes/core-node
 ```
 
-Instantiate a client with,
+Instantiate
 
 ```javascript
-const client = new Client({
-  api_key: "iddqd",
-});
+import { Client } from "@ideal-postcodes/core-node"
+
+const client = new Client({ api_key: "iddqd" });
 ```
 
-More configuration options [outlined in the docs](https://core-interface.ideal-postcodes.dev/interfaces/config.html)
+[Configuration options](https://core-interface.ideal-postcodes.dev/interfaces/config.html)
+
+Use
+
+```javascript
+const { IdpcRequestFailedError } = Client.errors;
+
+try {
+  const addresses = await client.lookupPostcode({ postcode: "SW1A2AA" });
+} catch (error) {
+  if (error instanceof IdpcRequestFailedError) {
+    // IdpcRequestFailedError indicates a 402 response code 
+    // Possibly the key balance has been depleted
+  }
+}
+```
 
 ---
 
 ### Quickstart
 
-The client exposes a number of simple methods to get at the most common tasks when interacting with the API.
+The client exposes a number of simple methods to get at the most common tasks when interacting with the API. Below is a (incomplete) list of commonly used methods.
 
 - [Lookup a Postcode](#lookup-a-postcode)
 - [Search for an Address](#search-for-an-address)
 - [Search for an Address by UDPRN](#search-for-an-address-by-udprn)
-- [Search for an Address by UMPRN](#search-for-an-address-by-umprn)
+
+For a complete list of client methods, including low level resource methods, please see the [core-interface documentation](https://core-interface.ideal-postcodes.dev/#documentation)
 
 #### Lookup a Postcode
 
@@ -66,7 +85,7 @@ const postcode = "id11qd";
 const addresses = await client.lookupPostcode({ postcode });
 ```
 
-Method options [outlined in the docs](https://core-interface.ideal-postcodes.dev/interfaces/lookuppostcodeoptions.html)
+[Method options](https://core-interface.ideal-postcodes.dev/interfaces/lookuppostcodeoptions.html)
 
 #### Search for an Address
 
@@ -78,7 +97,7 @@ const query = "10 downing street sw1a";
 const addresses = await client.lookupAddress({ query });
 ```
 
-Method options [outlined in the docs](https://core-interface.ideal-postcodes.dev/interfaces/lookupaddressoptions.html)
+[Method options](https://core-interface.ideal-postcodes.dev/interfaces/lookupaddressoptions.html)
 
 #### Search for an Address by UDPRN
 
@@ -92,21 +111,7 @@ const udprn = 23747771;
 const address = await client.lookupUdprn({ udprn });
 ```
 
-Method options [outlined in the docs](https://core-interface.ideal-postcodes.dev/interfaces/lookupudprnoptions.html)
-
-#### Search for an Address by UMPRN
-
-Return address for a given `umprn`
-
-Invalid UMPRN will return `null`
-
-```javascript
-const umprn = 50906066;
-
-const address = await client.lookupUmprn({ umprn });
-```
-
-Method options [outlined in the docs](https://core-interface.ideal-postcodes.dev/interfaces/lookupumprnoptions.html)
+[Method options](https://core-interface.ideal-postcodes.dev/interfaces/lookupumprnoptions.html)
 
 ## Test
 
