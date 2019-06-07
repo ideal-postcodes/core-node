@@ -1,0 +1,116 @@
+{
+  "name": "@ideal-postcodes/core-node",
+  "version": "1.0.0",
+  "description": "Node.js client for api.ideal-postcodes.co.uk",
+  "author": {
+    "name": "Ideal Postcodes",
+    "email": "support@ideal-postcodes.co.uk",
+    "url": "https://ideal-postcodes.co.uk"
+  },
+  "bugs": {
+    "url": "https://github.com/ideal-postcodes/core-node/issues",
+    "email": "support@ideal-postcodes.co.uk"
+  },
+  "homepage": "https://github.com/ideal-postcodes/core-node",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ideal-postcodes/core-node.git"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "semantic-release": "node_modules/.bin/semantic-release --no-ci",
+    "test:watch": "NODE_ENV=test node_modules/.bin/mocha --watch",
+    "test": "npm run lint && NODE_ENV=test node_modules/.bin/nyc node_modules/.bin/mocha",
+    "lint": "node_modules/.bin/tslint -c tslint.json -p tsconfig.json lib/**/*.ts",
+    "build": "npm run lint && node_modules/.bin/tsc",
+    "coverage": "node_modules/.bin/nyc report --reporter=text-lcov | node_modules/.bin/coveralls || true",
+    "docs": "./node_modules/.bin/typedoc --mode file --target ES3 --out docs/ --name 'Ideal Postcodes Node.js Client' --theme minimal --excludePrivate --hideGenerator --excludeExternals lib/",
+    "prepublishOnly": "npm run test && npm run build"
+  },
+  "files": [
+    "dist"
+  ],
+  "prettier": {
+    "trailingComma": "es5"
+  },
+  "nyc": {
+    "include": [
+      "lib/**/*.ts",
+      "generate/**/*.ts"
+    ],
+    "exclude": [
+      "dist/*",
+      "**/*.d.ts",
+      "generate/index.ts"
+    ],
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "text-summary",
+      "html"
+    ],
+    "all": true
+  },
+  "mocha": {
+    "extension": [
+      "ts"
+    ],
+    "exit": true,
+    "fullTrace": true,
+    "require": [
+      "ts-node/register",
+      "source-map-support/register"
+    ]
+  },
+  "engines": {
+    "node": ">=8.0"
+  },
+  "keywords": [
+    "API",
+    "Node.js",
+    "UK",
+    "Address",
+    "Postcode",
+    "Search",
+    "Ideal Postcodes"
+  ],
+  "release": {
+    "extends": "@cablanchard/semantic-release/dist/npm"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@ideal-postcodes/core-interface": "~1.1.1",
+    "got": "~9.6.0"
+  },
+  "devDependencies": {
+    "@cablanchard/semantic-release": "~1.2.1",
+    "@cablanchard/tsconfig": "1.0.0",
+    "@cablanchard/tslint": "0.0.1",
+    "@ideal-postcodes/api-fixtures": "~0.1.0",
+    "@ideal-postcodes/api-typings": "~1.1.0",
+    "@types/chai": "~4.1.7",
+    "@types/got": "~9.4.4",
+    "@types/mocha": "~5.2.7",
+    "@types/node": "~12.0.4",
+    "@types/prettier": "~1.16.4",
+    "@types/sinon": "~7.0.12",
+    "chai": "~4.2.0",
+    "coveralls": "~3.0.2",
+    "mocha": "~6.1.1",
+    "nyc": "~14.1.1",
+    "prettier": "~1.17.1",
+    "semantic-release": "~15.13.12",
+    "sinon": "~7.3.2",
+    "source-map-support": "~0.5.10",
+    "ts-node": "~8.2.0",
+    "tslint": "~5.17.0",
+    "typedoc": "~0.14.2",
+    "typescript": "~3.5.1"
+  }
+}

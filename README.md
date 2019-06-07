@@ -1,0 +1,119 @@
+<h1 align="center">
+  <img src="https://img.ideal-postcodes.co.uk/Ideal%20Postcodes%20Node%20Logo@3x.png" alt="Ideal Postcodes Node.js">
+</h1>
+
+> Node.js client for api.ideal-postcodes.co.uk
+
+[![CircleCI](https://circleci.com/gh/ideal-postcodes/core-node/tree/master.svg?style=svg)](https://circleci.com/gh/ideal-postcodes/core-node/tree/master)
+[![Coverage Status](https://coveralls.io/repos/github/ideal-postcodes/core-node/badge.svg?branch=master&t=nyUaqN)](https://coveralls.io/github/ideal-postcodes/core-node?branch=master)
+![Dependency Status](https://david-dm.org/ideal-postcodes/core-node.svg) 
+[![npm version](https://badge.fury.io/js/%40ideal-postcodes%2Fcore-node.svg)](https://badge.fury.io/js/%40ideal-postcodes%2Fcore-node)
+[![install size](https://packagephobia.now.sh/badge?p=@ideal-postcodes/core-node)](https://packagephobia.now.sh/result?p=@ideal-postcodes/core-node)
+
+`@ideal-postcodes/core-node` is the node.js client for api.ideal-postcodes.co.uk. All javascript clients implement a shared interface which is defined at [`@ideal-postcodes/core-interface`](https://github.com/ideal-postcodes/core-interface)
+
+
+## Links
+
+- [Installation and Configuration](#installation-and-configuration)
+- [Quickstart](#quickstart)
+- [Core API Documentation](https://core-interface.ideal-postcodes.dev/)
+- [Core Node Documentation](https://core-node.ideal-postcodes.dev/)
+- [npm Module](https://www.npmjs.com/package/@ideal-postcodes/core-node)
+- [Github Repository](https://github.com/ideal-postcodes/core-node)
+
+## Other Javascript Clients
+
+- [Browser Client Repository](https://github.com/ideal-postcodes/core-browser) 
+- [Bundled Browser Client Repository](https://github.com/ideal-postcodes/core-browser-bundled)
+
+## Documentation
+
+### Configuration
+
+```bash
+npm install @ideal-postcodes/core-node
+```
+
+Instantiate a client with,
+
+```javascript
+const client = new Client({
+  api_key: "iddqd",
+});
+```
+
+More configuration options [outlined in the docs](https://core-interface.ideal-postcodes.dev/interfaces/config.html)
+
+---
+
+### Quickstart
+
+The client exposes a number of simple methods to get at the most common tasks when interacting with the API.
+
+- [Lookup a Postcode](#lookup-a-postcode)
+- [Search for an Address](#search-for-an-address)
+- [Search for an Address by UDPRN](#search-for-an-address-by-udprn)
+- [Search for an Address by UMPRN](#search-for-an-address-by-umprn)
+
+#### Lookup a Postcode
+
+Return addresses associated with a given `postcode`
+
+```javascript
+const postcode = "id11qd";
+
+const addresses = await client.lookupPostcode({ postcode });
+```
+
+Method options [outlined in the docs](https://core-interface.ideal-postcodes.dev/interfaces/lookuppostcodeoptions.html)
+
+#### Search for an Address
+
+Return addresses associated with a given `query`
+
+```javascript
+const query = "10 downing street sw1a";
+
+const addresses = await client.lookupAddress({ query });
+```
+
+Method options [outlined in the docs](https://core-interface.ideal-postcodes.dev/interfaces/lookupaddressoptions.html)
+
+#### Search for an Address by UDPRN
+
+Return address for a given `udprn`
+
+Invalid UDPRN will return `null`
+
+```javascript
+const udprn = 23747771;
+
+const address = await client.lookupUdprn({ udprn });
+```
+
+Method options [outlined in the docs](https://core-interface.ideal-postcodes.dev/interfaces/lookupudprnoptions.html)
+
+#### Search for an Address by UMPRN
+
+Return address for a given `umprn`
+
+Invalid UMPRN will return `null`
+
+```javascript
+const umprn = 50906066;
+
+const address = await client.lookupUmprn({ umprn });
+```
+
+Method options [outlined in the docs](https://core-interface.ideal-postcodes.dev/interfaces/lookupumprnoptions.html)
+
+## Test
+
+```bash
+npm test
+```
+
+## License
+
+MIT
