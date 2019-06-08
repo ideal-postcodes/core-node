@@ -32,13 +32,13 @@
 
 ### Configuration & Usage
 
-Install
+**Install**
 
 ```bash
 npm install @ideal-postcodes/core-node
 ```
 
-Instantiate
+**Instantiate**
 
 ```javascript
 import { Client } from "@ideal-postcodes/core-node"
@@ -48,13 +48,19 @@ const client = new Client({ api_key: "iddqd" });
 
 [Configuration options](https://core-interface.ideal-postcodes.dev/interfaces/config.html)
 
-Use
+**Use**
+
+```javascript
+const addresses = await client.lookupPostcode({ postcode: "SW1A2AA" });
+```
+
+**Catch Errors**
 
 ```javascript
 const { IdpcRequestFailedError } = Client.errors;
 
 try {
-  const addresses = await client.lookupPostcode({ postcode: "SW1A2AA" });
+  await client.lookupAddresses({ query: "10 downing street" });
 } catch (error) {
   if (error instanceof IdpcRequestFailedError) {
     // IdpcRequestFailedError indicates a 402 response code 
