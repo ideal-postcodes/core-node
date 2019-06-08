@@ -52,6 +52,7 @@ describe("Agent", () => {
       sinon.assert.calledWithExactly(stub, url, {
         method,
         headers: header,
+        throwHttpErrors: false,
         query,
         json: true,
         timeout,
@@ -83,6 +84,7 @@ describe("Agent", () => {
       sinon.assert.calledOnce(stub);
       sinon.assert.calledWithExactly(stub, url, {
         method,
+        throwHttpErrors: false,
         json: true,
         body,
         headers: header,
@@ -117,6 +119,7 @@ describe("Agent", () => {
       sinon.assert.calledOnce(stub);
       sinon.assert.calledWithExactly(stub, url, {
         method: "GET",
+        throwHttpErrors: false,
         headers: {},
         query: {},
         json: true,

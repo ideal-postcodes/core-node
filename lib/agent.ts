@@ -56,6 +56,7 @@ export class Agent implements IAgent {
       headers: header,
       query,
       json: true,
+      throwHttpErrors: false,
       body,
       timeout,
     }).then(response => toHttpResponse(httpRequest, response));
@@ -68,6 +69,7 @@ export class Agent implements IAgent {
       headers: header,
       query,
       timeout,
+      throwHttpErrors: false,
       json: true,
     }).then(response => toHttpResponse(httpRequest, response));
   }
