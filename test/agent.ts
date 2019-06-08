@@ -90,5 +90,43 @@ describe("Agent", () => {
         timeout,
       } as any);
     });
+
+    it("handles status code 0f 0", async () => {
+      const url = "http://www.foo.com/";
+
+      const response: unknown = {
+        headers: {},
+        body: Buffer.from("{}"),
+        url,
+      };
+
+      const stub = sinon
+        .stub(agent, "got")
+        .resolves(response as Response<Buffer>);
+
+      const apiResponse = await agent.http({
+        method: "GET",
+        timeout: 1000,
+        url,
+        header: {},
+        query: {},
+      });
+
+      assert.equal(apiResponse.httpStatus, 0);
+
+      sinon.assert.calledOnce(stub);
+      sinon.assert.calledWithExactly(stub, url, {
+        method: "GET",
+        headers: {},
+        query: {},
+        json: true,
+        timeout: 1000,
+      } as any);
+    });
+  });
+
+  describe("Error handling", () => {
+    it("propogates non-200 responses to the agent");
+    it("wraps non-HTTP got errors");
   });
 });
