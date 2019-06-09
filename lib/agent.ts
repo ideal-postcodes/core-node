@@ -1,12 +1,11 @@
-import { Client } from "./client";
 import got, { GotInstance, Response } from "got";
 import {
   Agent as IAgent,
   HttpRequest,
   HttpResponse,
+  errors,
 } from "@ideal-postcodes/core-interface";
-
-const { IdealPostcodesError } = Client.errors;
+const { IdealPostcodesError } = errors;
 
 interface GotHeaders {
   [key: string]: string | string[] | undefined;
