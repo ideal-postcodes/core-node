@@ -121,6 +121,12 @@ const address = await client.lookupUdprn({ udprn });
 
 ## Test
 
+`@ideal-postcodes/core-node` is tested on:
+
+- Node 8
+- Node 10
+- Node 12
+
 ```bash
 npm test
 ```
