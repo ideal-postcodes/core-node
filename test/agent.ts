@@ -2,6 +2,9 @@ import * as sinon from "sinon";
 import { assert } from "chai";
 import { Agent, toHeader } from "../lib/agent";
 import { Response } from "got";
+import { Client } from "../lib/client";
+
+const { IdealPostcodesError } = Client.errors;
 
 describe("Agent", () => {
   let agent: Agent;
@@ -129,7 +132,67 @@ describe("Agent", () => {
   });
 
   describe("Error handling", () => {
-    it("propogates non-200 responses to the agent");
-    it("wraps non-HTTP got errors");
+    it("wraps non-HTTP got errors", async () => {
+      const url = "http://www.foo.com/";
+
+      const response: unknown = {
+        headers: {},
+        body: Buffer.from("{}"),
+        url,
+      };
+
+      const genericError = new Error("Generic error");
+
+      const stub = sinon.stub(agent, "got").rejects(genericError);
+
+      try {
+        await agent.http({
+          method: "GET",
+          timeout: 1000,
+          url,
+          header: {},
+          query: {},
+        });
+      } catch (error) {
+        assert.instanceOf(error, IdealPostcodesError);
+        assert.equal(error.metadata.got, genericError);
+        assert.equal(error.message, "[Error] Generic error");
+        return;
+      }
+
+      throw new Error("This should be unreachable");
+    });
+
+    it("wraps non-HTTP got errors from HTTP requests with body", async () => {
+      const url = "http://www.foo.com/";
+
+      const response: unknown = {
+        headers: {},
+        body: Buffer.from("{}"),
+        url,
+      };
+
+      const genericError = new Error("Generic error");
+
+      const stub = sinon.stub(agent, "got").rejects(genericError);
+
+      try {
+        await agent.http({
+          method: "POST",
+          timeout: 1000,
+          body: { foo: "bar" },
+          url,
+          header: {},
+          query: {},
+        });
+      } catch (error) {
+        assert.instanceOf(error, IdealPostcodesError);
+        assert.equal(error.metadata.got, genericError);
+        assert.equal(error.message, "[Error] Generic error");
+        return;
+      }
+
+      throw new Error("This should be unreachable");
+    });
   });
 });

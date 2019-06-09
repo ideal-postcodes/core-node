@@ -1,9 +1,12 @@
+import { Client } from "./client";
 import got, { GotInstance, Response } from "got";
 import {
   Agent as IAgent,
   HttpRequest,
   HttpResponse,
 } from "@ideal-postcodes/core-interface";
+
+const { IdealPostcodesError } = Client.errors;
 
 interface GotHeaders {
   [key: string]: string | string[] | undefined;
@@ -42,6 +45,15 @@ const toHttpResponse = (
   };
 };
 
+const handleError = (error: Error): Promise<never> => {
+  const idpcError = new IdealPostcodesError({
+    message: `[${error.name}] ${error.message}`,
+    httpStatus: 0,
+    metadata: { got: error },
+  });
+  return Promise.reject(idpcError);
+};
+
 export class Agent implements IAgent {
   public got: GotInstance;
 
@@ -59,7 +71,9 @@ export class Agent implements IAgent {
       throwHttpErrors: false,
       body,
       timeout,
-    }).then(response => toHttpResponse(httpRequest, response));
+    })
+      .then(response => toHttpResponse(httpRequest, response))
+      .catch(handleError);
   }
 
   private request(httpRequest: HttpRequest): Promise<HttpResponse> {
@@ -71,7 +85,9 @@ export class Agent implements IAgent {
       timeout,
       throwHttpErrors: false,
       json: true,
-    }).then(response => toHttpResponse(httpRequest, response));
+    })
+      .then(response => toHttpResponse(httpRequest, response))
+      .catch(handleError);
   }
 
   public http(httpRequest: HttpRequest): Promise<HttpResponse> {
