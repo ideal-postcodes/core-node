@@ -60,7 +60,7 @@ const addresses = await client.lookupPostcode({ postcode: "SW1A2AA" });
 const { IdpcRequestFailedError } = Client.errors;
 
 try {
-  await client.lookupAddresses({ query: "10 downing street" });
+  await client.lookupAddress({ query: "10 downing street" });
 } catch (error) {
   if (error instanceof IdpcRequestFailedError) {
     // IdpcRequestFailedError indicates a 402 response code 
