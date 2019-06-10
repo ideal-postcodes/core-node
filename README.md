@@ -10,16 +10,22 @@
 [![npm version](https://badge.fury.io/js/%40ideal-postcodes%2Fcore-node.svg)](https://badge.fury.io/js/%40ideal-postcodes%2Fcore-node)
 [![install size](https://packagephobia.now.sh/badge?p=@ideal-postcodes/core-node)](https://packagephobia.now.sh/result?p=@ideal-postcodes/core-node)
 
-`@ideal-postcodes/core-node` is the node.js client for api.ideal-postcodes.co.uk. All javascript clients implement a shared interface which is defined at [`@ideal-postcodes/core-interface`](https://github.com/ideal-postcodes/core-interface)
+`@ideal-postcodes/core-node` is the node.js client for api.ideal-postcodes.co.uk
 
+Our javascript clients implement a common interface which is implemented at [`@ideal-postcodes/core-interface`](https://github.com/ideal-postcodes/core-interface). In depth client documentation can be found at [core-interface.ideal-postcodes.dev](https://core-interface.ideal-postcodes.dev).
+
+`@ideal-postcodes/core-node` is tested against [all maintained, stable releases](https://nodejs.org/en/about/releases/). Specifically, our [CI test suite](.circleci/config.yaml) targets the following versions:
+
+- Node.js 12
+- Node.js 10
+- Node.js 8
 
 ## Links
 
-- [Configuration & Usage](#configuration-&-usage)
+- [Configuration & Usage](#configuration--usage)
 - [Quickstart](#quickstart)
 - [Client Documentation](https://core-interface.ideal-postcodes.dev/#documentation)
-- [Core API Documentation](https://core-interface.ideal-postcodes.dev/)
-- [Core Node Documentation](https://core-node.ideal-postcodes.dev/)
+- [Core JS API Client Documentation](https://core-interface.ideal-postcodes.dev/)
 - [npm Module](https://www.npmjs.com/package/@ideal-postcodes/core-node)
 - [Github Repository](https://github.com/ideal-postcodes/core-node)
 
@@ -41,6 +47,9 @@ npm install @ideal-postcodes/core-node
 **Instantiate**
 
 ```javascript
+const { Client } = require("@ideal-postcodes/core-node");
+
+// or, if applicable,
 import { Client } from "@ideal-postcodes/core-node"
 
 const client = new Client({ api_key: "iddqd" });
