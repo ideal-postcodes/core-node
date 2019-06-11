@@ -14,7 +14,7 @@
 
 Our javascript clients implement a common interface which is implemented at [`@ideal-postcodes/core-interface`](https://github.com/ideal-postcodes/core-interface). In depth client documentation can be found at [core-interface.ideal-postcodes.dev](https://core-interface.ideal-postcodes.dev).
 
-`@ideal-postcodes/core-node` is tested against [all maintained, stable releases](https://nodejs.org/en/about/releases/). Specifically, our [CI test suite](.circleci/config.yaml) targets the following versions:
+`@ideal-postcodes/core-node` is tested against [all maintained, stable releases](https://nodejs.org/en/about/releases/). [CI test suite](.circleci/config.yml) targets:
 
 - Node.js 12
 - Node.js 10
