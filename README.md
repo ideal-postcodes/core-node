@@ -6,13 +6,13 @@
 
 [![CircleCI](https://circleci.com/gh/ideal-postcodes/core-node/tree/master.svg?style=svg)](https://circleci.com/gh/ideal-postcodes/core-node/tree/master)
 [![Coverage Status](https://coveralls.io/repos/github/ideal-postcodes/core-node/badge.svg?branch=master&t=nyUaqN)](https://coveralls.io/github/ideal-postcodes/core-node?branch=master)
-![Dependency Status](https://david-dm.org/ideal-postcodes/core-node.svg) 
+![Dependency Status](https://david-dm.org/ideal-postcodes/core-node.svg)
 [![npm version](https://badge.fury.io/js/%40ideal-postcodes%2Fcore-node.svg)](https://badge.fury.io/js/%40ideal-postcodes%2Fcore-node)
 [![install size](https://packagephobia.now.sh/badge?p=@ideal-postcodes/core-node)](https://packagephobia.now.sh/result?p=@ideal-postcodes/core-node)
 
-`@ideal-postcodes/core-node` is the node.js client for api.ideal-postcodes.co.uk
+`@ideal-postcodes/core-node` is the Node.js client for api.ideal-postcodes.co.uk
 
-Our javascript clients implement a common interface which is implemented at [`@ideal-postcodes/core-interface`](https://github.com/ideal-postcodes/core-interface). In depth client documentation can be found at [core-interface.ideal-postcodes.dev](https://core-interface.ideal-postcodes.dev).
+Our JavaScript client implements a common interface which is implemented at [`@ideal-postcodes/core-interface`](https://github.com/ideal-postcodes/core-interface). In depth client documentation can be found at [core-interface.ideal-postcodes.dev](https://core-interface.ideal-postcodes.dev).
 
 `@ideal-postcodes/core-node` is tested against [all maintained, stable releases](https://nodejs.org/en/about/releases/). [CI test suite](.circleci/config.yml) targets:
 
@@ -27,24 +27,24 @@ Our javascript clients implement a common interface which is implemented at [`@i
 - [Client Documentation](https://core-interface.ideal-postcodes.dev/#documentation)
 - [Core JS API Client Documentation](https://core-interface.ideal-postcodes.dev/)
 - [npm Module](https://www.npmjs.com/package/@ideal-postcodes/core-node)
-- [Github Repository](https://github.com/ideal-postcodes/core-node)
+- [GitHub Repository](https://github.com/ideal-postcodes/core-node)
 
-## Other Javascript Clients
+## Other JavaScript Clients
 
-- [Browser Client Repository](https://github.com/ideal-postcodes/core-browser) 
+- [Browser Client Repository](https://github.com/ideal-postcodes/core-browser)
 - [Bundled Browser Client Repository](https://github.com/ideal-postcodes/core-browser-bundled)
 
 ## Documentation
 
 ### Configuration & Usage
 
-**Install**
+#### Install
 
 ```bash
 npm install @ideal-postcodes/core-node
 ```
 
-**Instantiate**
+#### Instantiate
 
 ```javascript
 const { Client } = require("@ideal-postcodes/core-node");
@@ -57,13 +57,13 @@ const client = new Client({ api_key: "iddqd" });
 
 [Configuration options](https://core-interface.ideal-postcodes.dev/interfaces/config.html)
 
-**Use**
+#### Use
 
 ```javascript
 const addresses = await client.lookupPostcode({ postcode: "SW1A2AA" });
 ```
 
-**Catch Errors**
+#### Catch Errors
 
 ```javascript
 const { IdpcRequestFailedError } = Client.errors;
@@ -72,7 +72,7 @@ try {
   await client.lookupAddress({ query: "10 downing street" });
 } catch (error) {
   if (error instanceof IdpcRequestFailedError) {
-    // IdpcRequestFailedError indicates a 402 response code 
+    // IdpcRequestFailedError indicates a 402 response code
     // Possibly the key balance has been depleted
   }
 }
@@ -84,9 +84,20 @@ try {
 
 The client exposes a number of simple methods to get at the most common tasks when interacting with the API. Below is a (incomplete) list of commonly used methods.
 
-- [Lookup a Postcode](#lookup-a-postcode)
-- [Search for an Address](#search-for-an-address)
-- [Search for an Address by UDPRN](#search-for-an-address-by-udprn)
+- [Links](#links)
+- [Other JavaScript Clients](#other-javascript-clients)
+- [Documentation](#documentation)
+  - [Configuration & Usage](#configuration--usage)
+    - [Install](#install)
+    - [Instantiate](#instantiate)
+    - [Use](#use)
+    - [Catch Errors](#catch-errors)
+  - [Quickstart](#quickstart)
+    - [Lookup a Postcode](#lookup-a-postcode)
+    - [Search for an Address](#search-for-an-address)
+    - [Search for an Address by UDPRN](#search-for-an-address-by-udprn)
+- [Test](#test)
+- [Licence](#licence)
 
 For a complete list of client methods, including low level resource methods, please see the [core-interface documentation](https://core-interface.ideal-postcodes.dev/#documentation)
 
@@ -140,6 +151,6 @@ const address = await client.lookupUdprn({ udprn });
 npm test
 ```
 
-## License
+## Licence
 
 MIT
