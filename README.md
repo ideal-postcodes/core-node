@@ -91,7 +91,7 @@ try {
 Be aware this options object will overwrite any existing [got](https://github.com/sindresorhus/got) HTTP request parameters.
 
 ```javascript
-const client = new Client({ api_key: "iddqd", {
+const client = new Client({ api_key: "iddqd" }, {
   cache: new Map, // Instantiate a cache: https://github.com/sindresorhus/got#cache-1
   hooks: {        // Hook into HTTP responses: https://github.com/sindresorhus/got#hooksafterresponse
     afterResponse: response => {
