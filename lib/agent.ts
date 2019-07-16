@@ -74,6 +74,7 @@ export class Agent implements IAgent {
       throwHttpErrors: false,
       body,
       timeout,
+      ...this.gotConfig,
     })
       .then(response => toHttpResponse(httpRequest, response))
       .catch(handleError);
@@ -88,6 +89,7 @@ export class Agent implements IAgent {
       timeout,
       throwHttpErrors: false,
       json: true,
+      ...this.gotConfig,
     })
       .then(response => toHttpResponse(httpRequest, response))
       .catch(handleError);

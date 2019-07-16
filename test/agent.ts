@@ -142,6 +142,81 @@ describe("Agent", () => {
         timeout: 1000,
       } as any);
     });
+
+    describe("GOT Configuration", () => {
+      const timeout = 2000;
+      const retry = 2;
+
+      beforeEach(() => {
+        agent = new Agent({ timeout, retry });
+      });
+
+      it("overrides HTTP configuration for GET requests", async () => {
+        const method: HttpVerb = "GET";
+        const query = { foo: "bar" };
+        const header = { baz: "quux" };
+        const url = "http://www.foo.com/";
+        const SUCCESS = 200;
+
+        const response: unknown = {
+          statusCode: SUCCESS,
+          headers: header,
+          body: Buffer.from("{}"),
+          url,
+        };
+
+        const stub = sinon
+          .stub(agent, "got")
+          .resolves(response as Response<Buffer>);
+
+        await agent.http({ method, timeout: 1000, url, header, query });
+
+        sinon.assert.calledOnce(stub);
+        sinon.assert.calledWithExactly(stub, url, {
+          method,
+          headers: header,
+          throwHttpErrors: false,
+          query,
+          json: true,
+          timeout,
+          retry,
+        } as any);
+      });
+
+      it("overrides HTTP configuration for POST requests", async () => {
+        const method: HttpVerb = "POST";
+        const query = { foo: "bar" };
+        const header = { baz: "quux" };
+        const url = "http://www.foo.com/";
+        const SUCCESS = 200;
+        const body = { foo: "bar" };
+
+        const response: unknown = {
+          statusCode: SUCCESS,
+          headers: header,
+          body: Buffer.from("{}"),
+          url,
+        };
+
+        const stub = sinon
+          .stub(agent, "got")
+          .resolves(response as Response<Buffer>);
+
+        await agent.http({ body, method, timeout: 1000, url, header, query });
+
+        sinon.assert.calledOnce(stub);
+        sinon.assert.calledWithExactly(stub, url, {
+          method,
+          throwHttpErrors: false,
+          json: true,
+          body,
+          headers: header,
+          query,
+          retry,
+          timeout,
+        } as any);
+      });
+    });
   });
 
   describe("Error handling", () => {
