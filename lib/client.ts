@@ -7,7 +7,7 @@ import {
   TIMEOUT,
   STRICT_AUTHORISATION,
 } from "@ideal-postcodes/core-interface";
-import { Agent } from "./agent";
+import { Agent, GotConfig } from "./agent";
 
 const userAgent = `IdealPostcodes ideal-postcodes/core-node`;
 
@@ -16,8 +16,8 @@ interface Config extends Partial<CoreConfig> {
 }
 
 export class Client extends CoreInterface {
-  constructor(config: Config) {
-    const agent = new Agent();
+  constructor(config: Config, gotConfig: GotConfig = {}) {
+    const agent = new Agent(gotConfig);
     const header = { "User-Agent": userAgent };
     const tls = config.tls === undefined ? TLS : config.tls;
     const baseUrl = config.baseUrl === undefined ? API_URL : config.baseUrl;

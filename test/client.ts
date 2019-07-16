@@ -25,6 +25,7 @@ describe("Client", () => {
       assert.equal(client.strictAuthorisation, STRICT_AUTHORISATION);
       assert.equal(client.timeout, TIMEOUT);
     });
+
     it("allows default config values to be overwritten", () => {
       const options = {
         tls: false,
@@ -44,9 +45,17 @@ describe("Client", () => {
         options.strictAuthorisation
       );
       assert.equal(customClient.timeout, options.timeout);
+      assert.deepEqual((customClient.agent as any).gotConfig, {});
     });
+
     it("assigns user agent header", () => {
       assert.match(client.header["User-Agent"], /Core-Node/i);
+    });
+
+    it("assigns got config", () => {
+      const retry = 2;
+      const customClient = new Client({ api_key }, { retry });
+      assert.deepEqual((customClient.agent as any).gotConfig, { retry });
     });
   });
 });
