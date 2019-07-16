@@ -38,6 +38,10 @@ Our JavaScript client implements a common interface which is implemented at [`@i
 
 ### Configuration & Usage
 
+- [Install](#install)
+- [Instantiate](#instantiate) and [Use](#use) client
+- [Catch Errors](#catch-errors)
+
 #### Install
 
 ```bash
@@ -84,20 +88,9 @@ try {
 
 The client exposes a number of simple methods to get at the most common tasks when interacting with the API. Below is a (incomplete) list of commonly used methods.
 
-- [Links](#links)
-- [Other JavaScript Clients](#other-javascript-clients)
-- [Documentation](#documentation)
-  - [Configuration & Usage](#configuration--usage)
-    - [Install](#install)
-    - [Instantiate](#instantiate)
-    - [Use](#use)
-    - [Catch Errors](#catch-errors)
-  - [Quickstart](#quickstart)
-    - [Lookup a Postcode](#lookup-a-postcode)
-    - [Search for an Address](#search-for-an-address)
-    - [Search for an Address by UDPRN](#search-for-an-address-by-udprn)
-- [Test](#test)
-- [Licence](#licence)
+- [Lookup a Postcode](#lookup-a-postcode)
+- [Search for an Address](#search-for-an-address)
+- [Search for an Address by UDPRN](#search-for-an-address-by-udprn)
 
 For a complete list of client methods, including low level resource methods, please see the [core-interface documentation](https://core-interface.ideal-postcodes.dev/#documentation)
 
