@@ -41,6 +41,8 @@ Our JavaScript client implements a common interface which is implemented at [`@i
 - [Install](#install)
 - [Instantiate](#instantiate) and [Use](#use) client
 - [Catch Errors](#catch-errors)
+- [Configure Agent](#configure-agent)
+- [Proxy HTTP Requests](#proxy-requests)
 
 #### Install
 
@@ -80,6 +82,40 @@ try {
     // Possibly the key balance has been depleted
   }
 }
+```
+
+#### Configure HTTP Agent
+
+`core-node` uses [got](https://github.com/sindresorhus/got) as its underlying HTTP client. The Ideal Postcodes API client can also be optionally configured with a [got](https://github.com/sindresorhus/got) options object which is fed to [got](https://github.com/sindresorhus/got) on every request.
+
+Be aware this options object will overwrite any existing [got](https://github.com/sindresorhus/got) HTTP request parameters.
+
+```javascript
+const client = new Client({ api_key: "iddqd", {
+  cache: new Map, // Instantiate a cache: https://github.com/sindresorhus/got#cache-1
+  hooks: {        // Hook into HTTP responses: https://github.com/sindresorhus/got#hooksafterresponse
+    afterResponse: response => {
+      log(response);
+      return response;
+    }
+  },
+});
+```
+
+#### Proxy HTTP Requests
+
+You can [proxy requests](https://github.com/sindresorhus/got#proxies) by configuring the underlying [got](https://github.com/sindresorhus/got) HTTP client.
+
+```javascript
+const tunnel = require("tunnel");
+
+const client = new Client(config, {
+  agent: tunnel.httpOverHttp({
+    proxy: {
+      host: "localhost"
+    }
+  })
+});
 ```
 
 ---
