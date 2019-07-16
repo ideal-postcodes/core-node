@@ -16,6 +16,14 @@ interface Config extends Partial<CoreConfig> {
 }
 
 export class Client extends CoreInterface {
+  /**
+   * Client constructor extends CoreInterface by also accepting an optional got
+   * configuration object as the second argument.
+   *
+   * got is the underlying HTTP client that powers core-node. Be careful when
+   * configuring gotConfig so as not to manually override critical request
+   * attributes like method, query, header, etc.
+   */
   constructor(config: Config, gotConfig: GotConfig = {}) {
     const agent = new Agent(gotConfig);
     const header = { "User-Agent": userAgent };

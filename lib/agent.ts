@@ -15,6 +15,12 @@ interface StringMap {
   [key: string]: string;
 }
 
+/**
+ * GotConfig
+ *
+ * An optional configuration object which is passed to the underlying got http
+ * client
+ */
 export type GotConfig = Partial<GotJSONOptions>;
 
 // Converts a Got header object to one that can be used by the client
