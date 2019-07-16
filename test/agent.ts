@@ -13,6 +13,19 @@ describe("Agent", () => {
     agent = new Agent();
   });
 
+  describe("Agent class", () => {
+    it("allows for optional got configuration", () => {
+      const a = new Agent();
+      assert.deepEqual(a.gotConfig, {});
+    });
+
+    it("assigns GOT config", () => {
+      const retry = 2;
+      const a = new Agent({ retry });
+      assert.deepEqual({ retry }, a.gotConfig);
+    });
+  });
+
   describe("toHeader", () => {
     it("coerces a Got header object into an object of strings", () => {
       const gotHeader = {
