@@ -1,4 +1,4 @@
-import got, { GotInstance, Response } from "got";
+import got, { GotInstance, Response, GotJSONOptions } from "got";
 import {
   Agent as IAgent,
   HttpRequest,
@@ -14,6 +14,14 @@ interface GotHeaders {
 interface StringMap {
   [key: string]: string;
 }
+
+/**
+ * GotConfig
+ *
+ * An optional configuration object which is passed to the underlying got http
+ * client
+ */
+export type GotConfig = Partial<GotJSONOptions>;
 
 // Converts a Got header object to one that can be used by the client
 export const toHeader = (gotHeaders: GotHeaders): StringMap => {
@@ -55,9 +63,11 @@ const handleError = (error: Error): Promise<never> => {
 
 export class Agent implements IAgent {
   public got: GotInstance;
+  public gotConfig: GotConfig;
 
-  constructor() {
+  constructor(gotConfig: GotConfig = {}) {
     this.got = got;
+    this.gotConfig = gotConfig;
   }
 
   private requestWithBody(httpRequest: HttpRequest): Promise<HttpResponse> {
@@ -70,6 +80,7 @@ export class Agent implements IAgent {
       throwHttpErrors: false,
       body,
       timeout,
+      ...this.gotConfig,
     })
       .then(response => toHttpResponse(httpRequest, response))
       .catch(handleError);
@@ -84,6 +95,7 @@ export class Agent implements IAgent {
       timeout,
       throwHttpErrors: false,
       json: true,
+      ...this.gotConfig,
     })
       .then(response => toHttpResponse(httpRequest, response))
       .catch(handleError);

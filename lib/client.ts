@@ -7,7 +7,7 @@ import {
   TIMEOUT,
   STRICT_AUTHORISATION,
 } from "@ideal-postcodes/core-interface";
-import { Agent } from "./agent";
+import { Agent, GotConfig } from "./agent";
 
 const userAgent = `IdealPostcodes ideal-postcodes/core-node`;
 
@@ -16,8 +16,16 @@ interface Config extends Partial<CoreConfig> {
 }
 
 export class Client extends CoreInterface {
-  constructor(config: Config) {
-    const agent = new Agent();
+  /**
+   * Client constructor extends CoreInterface by also accepting an optional got
+   * configuration object as the second argument.
+   *
+   * got is the underlying HTTP client that powers core-node. Be careful when
+   * configuring gotConfig so as not to manually override critical request
+   * attributes like method, query, header, etc.
+   */
+  constructor(config: Config, gotConfig: GotConfig = {}) {
+    const agent = new Agent(gotConfig);
     const header = { "User-Agent": userAgent };
     const tls = config.tls === undefined ? TLS : config.tls;
     const baseUrl = config.baseUrl === undefined ? API_URL : config.baseUrl;
