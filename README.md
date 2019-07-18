@@ -12,7 +12,7 @@
 
 `@ideal-postcodes/core-node` is the Node.js client for api.ideal-postcodes.co.uk
 
-Our JavaScript client implements a common interface which is implemented at [`@ideal-postcodes/core-interface`](https://github.com/ideal-postcodes/core-interface). In depth client documentation can be found at [core-interface.ideal-postcodes.dev](https://core-interface.ideal-postcodes.dev).
+Our JavaScript client implements a common interface defined at [`@ideal-postcodes/core-interface`](https://github.com/ideal-postcodes/core-interface). In depth client documentation can be found at [core-interface.ideal-postcodes.dev](https://core-interface.ideal-postcodes.dev).
 
 `@ideal-postcodes/core-node` is tested against [all maintained, stable releases](https://nodejs.org/en/about/releases/). [CI test suite](.circleci/config.yml) targets:
 
@@ -42,7 +42,7 @@ Our JavaScript client implements a common interface which is implemented at [`@i
 - [Instantiate](#instantiate) and [Use](#use) client
 - [Catch Errors](#catch-errors)
 - [Configure Agent](#configure-agent)
-- [Proxy HTTP Requests](#proxy-requests)
+  - [Proxy HTTP Requests](#proxy-requests)
 
 #### Install
 
@@ -95,6 +95,7 @@ const client = new Client({ api_key: "iddqd" }, {
   cache: new Map, // Instantiate a cache: https://github.com/sindresorhus/got#cache-1
   hooks: {        // Hook into HTTP responses: https://github.com/sindresorhus/got#hooksafterresponse
     afterResponse: response => {
+      modify(response);
       log(response);
       return response;
     }
@@ -102,7 +103,7 @@ const client = new Client({ api_key: "iddqd" }, {
 });
 ```
 
-#### Proxy HTTP Requests
+##### Proxy HTTP Requests
 
 You can [proxy requests](https://github.com/sindresorhus/got#proxies) by configuring the underlying [got](https://github.com/sindresorhus/got) HTTP client.
 
@@ -169,12 +170,6 @@ const address = await client.lookupUdprn({ udprn });
 [Method options](https://core-interface.ideal-postcodes.dev/interfaces/lookupumprnoptions.html)
 
 ## Test
-
-`@ideal-postcodes/core-node` is tested on:
-
-- Node 8
-- Node 10
-- Node 12
 
 ```bash
 npm test
