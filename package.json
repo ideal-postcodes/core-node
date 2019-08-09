@@ -95,7 +95,7 @@
     "@cablanchard/tslint": "0.0.1",
     "@ideal-postcodes/api-fixtures": "~0.1.0",
     "@ideal-postcodes/api-typings": "~1.1.0",
-    "@types/chai": "~4.1.7",
+    "@types/chai": "~4.2.0",
     "@types/got": "~9.6.1",
     "@types/mocha": "~5.2.7",
     "@types/nock": "~10.0.3",
