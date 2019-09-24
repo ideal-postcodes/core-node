@@ -33,6 +33,7 @@
     "dist"
   ],
   "prettier": {
+    "editorconfig": true,
     "trailingComma": "es5"
   },
   "nyc": {
