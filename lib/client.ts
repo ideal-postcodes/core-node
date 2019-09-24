@@ -48,7 +48,8 @@ export class Client extends CoreInterface {
    *
    * got is the underlying HTTP client that powers core-node. Be careful when
    * configuring gotConfig so as not to manually override critical request
-   * attributes like method, query, header, etc.
+   * attributes like method, query, header, etc. got confirmation options
+   * available here: [github.com/sindresorhus/got#options](https://github.com/sindresorhus/got#options)
    */
   constructor(config: Config, gotConfig: GotConfig = {}) {
     const agent = new Agent(gotConfig);
