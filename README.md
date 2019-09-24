@@ -41,7 +41,7 @@ Our JavaScript client implements a common interface defined at [`@ideal-postcode
 - [Install](#install)
 - [Instantiate](#instantiate) and [Use](#use) client
 - [Catch Errors](#catch-errors)
-- [Configure Agent](#configure-agent)
+- [Configure Agent](#configure-http-agent)
   - [Proxy HTTP Requests](#proxy-requests)
 
 #### Install
