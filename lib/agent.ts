@@ -11,10 +11,6 @@ interface GotHeaders {
   [key: string]: string | string[] | undefined;
 }
 
-interface StringMap {
-  [key: string]: string;
-}
-
 /**
  * GotConfig
  *
@@ -24,8 +20,8 @@ interface StringMap {
 export type GotConfig = Partial<GotJSONOptions>;
 
 // Converts a Got header object to one that can be used by the client
-export const toHeader = (gotHeaders: GotHeaders): StringMap => {
-  return Object.keys(gotHeaders).reduce(
+export const toHeader = (gotHeaders: GotHeaders): Record<string, string> => {
+  return Object.keys(gotHeaders).reduce<Record<string, string>>(
     (headers, key) => {
       const val = gotHeaders[key];
       if (typeof val === "string") {
@@ -35,7 +31,7 @@ export const toHeader = (gotHeaders: GotHeaders): StringMap => {
       }
       return headers;
     },
-    {} as StringMap
+    {}
   );
 };
 
