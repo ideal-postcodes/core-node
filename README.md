@@ -5,7 +5,7 @@
 > Node.js client for api.ideal-postcodes.co.uk
 
 [![CircleCI](https://circleci.com/gh/ideal-postcodes/core-node/tree/master.svg?style=svg)](https://circleci.com/gh/ideal-postcodes/core-node/tree/master)
-[![Coverage Status](https://coveralls.io/repos/github/ideal-postcodes/core-node/badge.svg?branch=master&t=nyUaqN)](https://coveralls.io/github/ideal-postcodes/core-node?branch=master)
+[![codecov](https://codecov.io/gh/ideal-postcodes/core-node/branch/master/graph/badge.svg)](https://codecov.io/gh/ideal-postcodes/core-node)
 ![Dependency Status](https://david-dm.org/ideal-postcodes/core-node.svg)
 [![npm version](https://badge.fury.io/js/%40ideal-postcodes%2Fcore-node.svg)](https://badge.fury.io/js/%40ideal-postcodes%2Fcore-node)
 [![install size](https://packagephobia.now.sh/badge?p=@ideal-postcodes/core-node)](https://packagephobia.now.sh/result?p=@ideal-postcodes/core-node)
