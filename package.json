@@ -23,7 +23,7 @@
     "test:watch": "NODE_ENV=test mocha --watch",
     "test:nock:reload": "NODE_ENV=test RECORD=true mocha",
     "test": "npm run lint && NODE_ENV=test nyc mocha",
-    "lint": "tslint -c tslint.json -p tsconfig.json lib/**/*.ts",
+    "lint": "eslint lib/**/*.ts",
     "build": "npm run lint && tsc",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "docs": "typedoc --mode file --out docs/ --name 'Ideal Postcodes Node.js Client' --theme minimal --excludePrivate --hideGenerator lib/",
@@ -91,9 +91,9 @@
     "got": "~9.6.0"
   },
   "devDependencies": {
+    "@cablanchard/eslint-config": "~1.1.1",
     "@cablanchard/semantic-release": "~1.2.1",
     "@cablanchard/tsconfig": "1.0.0",
-    "@cablanchard/tslint": "0.0.1",
     "@ideal-postcodes/api-fixtures": "~0.1.0",
     "@ideal-postcodes/api-typings": "~1.1.0",
     "@types/chai": "~4.2.0",
@@ -105,6 +105,7 @@
     "@types/sinon": "~7.0.12",
     "chai": "~4.2.0",
     "codecov": "~3.6.1",
+    "eslint": "~6.5.0",
     "mocha": "~6.2.0",
     "nock": "11.3.4",
     "nyc": "~14.1.1",
@@ -113,7 +114,6 @@
     "sinon": "~7.5.0",
     "source-map-support": "~0.5.10",
     "ts-node": "~8.4.1",
-    "tslint": "~5.20.0",
     "typedoc": "~0.15.0",
     "typescript": "~3.6.2"
   }
