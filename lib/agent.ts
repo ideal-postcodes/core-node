@@ -30,24 +30,27 @@ interface GotHeaders {
 export type GotConfig = Partial<GotJSONOptions>;
 
 /**
+ * @hidden
+ */
+interface ToHeader {
+  (gotHeaders: GotHeaders): Record<string, string>;
+}
+
+/**
  * Converts a Got header object to one that can be used by the client
  *
  * @hidden
  */
-export const toHeader = (gotHeaders: GotHeaders): Record<string, string> => {
-  return Object.keys(gotHeaders).reduce<Record<string, string>>(
-    (headers, key) => {
-      const val = gotHeaders[key];
-      if (typeof val === "string") {
-        headers[key] = val;
-      } else if (Array.isArray(val)) {
-        headers[key] = val.join(",");
-      }
-      return headers;
-    },
-    {}
-  );
-};
+export const toHeader: ToHeader = gotHeaders =>
+  Object.keys(gotHeaders).reduce<Record<string, string>>((headers, key) => {
+    const val = gotHeaders[key];
+    if (typeof val === "string") {
+      headers[key] = val;
+    } else if (Array.isArray(val)) {
+      headers[key] = val.join(",");
+    }
+    return headers;
+  }, {});
 
 /**
  * Adapts got responses to a format consumable by core-interface
@@ -57,15 +60,13 @@ export const toHeader = (gotHeaders: GotHeaders): Record<string, string> => {
 const toHttpResponse = (
   httpRequest: HttpRequest,
   response: Response<object>
-): HttpResponse => {
-  return {
-    httpRequest,
-    body: response.body,
-    httpStatus: response.statusCode || 0,
-    header: toHeader(response.headers),
-    metadata: { response },
-  };
-};
+): HttpResponse => ({
+  httpRequest,
+  body: response.body,
+  httpStatus: response.statusCode || 0,
+  header: toHeader(response.headers),
+  metadata: { response },
+});
 
 /**
  * Catch non-response errors (e.g. network failure, DNS failure, timeout)
