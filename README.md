@@ -167,7 +167,7 @@ const udprn = 23747771;
 const address = await client.lookupUdprn({ udprn });
 ```
 
-[Method options](https://core-interface.ideal-postcodes.dev/interfaces/lookupumprnoptions.html)
+[Method options](https://core-interface.ideal-postcodes.dev/interfaces/lookupudprnoptions.html)
 
 ## Test
 
