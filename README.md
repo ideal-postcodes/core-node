@@ -6,26 +6,26 @@
 
 [![CircleCI](https://circleci.com/gh/ideal-postcodes/core-node/tree/master.svg?style=svg)](https://circleci.com/gh/ideal-postcodes/core-node/tree/master)
 [![codecov](https://codecov.io/gh/ideal-postcodes/core-node/branch/master/graph/badge.svg)](https://codecov.io/gh/ideal-postcodes/core-node)
-![Dependency Status](https://david-dm.org/ideal-postcodes/core-node.svg)
-[![npm version](https://badge.fury.io/js/%40ideal-postcodes%2Fcore-node.svg)](https://badge.fury.io/js/%40ideal-postcodes%2Fcore-node)
+[![Dependency Status](https://david-dm.org/ideal-postcodes/core-node.svg)](https://david-dm.org/ideal-postcodes/core-node)
+[![npm version](https://badge.fury.io/js/%40ideal-postcodes%2Fcore-node.svg)](https://www.npmjs.com/package/@ideal-postcodes/core-node)
 [![install size](https://packagephobia.now.sh/badge?p=@ideal-postcodes/core-node)](https://packagephobia.now.sh/result?p=@ideal-postcodes/core-node)
 
 `@ideal-postcodes/core-node` is the Node.js client for api.ideal-postcodes.co.uk
 
-Our JavaScript client implements a common interface defined at [`@ideal-postcodes/core-interface`](https://github.com/ideal-postcodes/core-interface). In depth client documentation can be found at [core-interface.ideal-postcodes.dev](https://core-interface.ideal-postcodes.dev).
+Our JavaScript client implements a common interface defined at [@ideal-postcodes/core-interface](https://github.com/ideal-postcodes/core-interface).
 
-`@ideal-postcodes/core-node` is tested against [all maintained, stable releases](https://nodejs.org/en/about/releases/). [CI test suite](.circleci/config.yml) targets:
+High level client documentation can be found at [core-interface](https://github.com/ideal-postcodes/core-interface/blob/master/README.md).
 
-- Node.js 12
-- Node.js 10
-- Node.js 8
+In depth client documentation can be found at [core-interface.ideal-postcodes.dev](https://core-interface.ideal-postcodes.dev).
+
+`@ideal-postcodes/core-node` is tested against [all maintained, stable releases](https://nodejs.org/en/about/releases/).
 
 ## Links
 
 - [Configuration & Usage](#configuration--usage)
 - [Quickstart](#quickstart)
-- [Client Documentation](https://core-interface.ideal-postcodes.dev/#documentation)
-- [Core JS API Client Documentation](https://core-interface.ideal-postcodes.dev/)
+- [Client Documentation](https://github.com/ideal-postcodes/core-interface/blob/master/README.md)
+- [In Depth Client Documentation](https://core-interface.ideal-postcodes.dev/#documentation)
 - [npm Module](https://www.npmjs.com/package/@ideal-postcodes/core-node)
 - [GitHub Repository](https://github.com/ideal-postcodes/core-node)
 
