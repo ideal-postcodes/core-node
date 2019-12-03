@@ -7,7 +7,6 @@ import {
 } from "@ideal-postcodes/core-interface";
 import queryString from "querystring";
 import { URL } from 'url';
-const { IdealPostcodesError } = errors;
 
 const {
   /**
