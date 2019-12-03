@@ -1,10 +1,13 @@
-import got, { GotInstance, Response, GotJSONOptions } from "got";
+import got, { Got, Response, GotOptions } from "got";
 import {
   Agent as IAgent,
   HttpRequest,
   HttpResponse,
   errors,
 } from "@ideal-postcodes/core-interface";
+import queryString from "querystring";
+import { URL } from 'url';
+const { IdealPostcodesError } = errors;
 
 const {
   /**
@@ -27,7 +30,7 @@ interface GotHeaders {
  * attributes like method, query, header, etc. `got` confirmation options
  * available here: [github.com/sindresorhus/got#options](https://github.com/sindresorhus/got#options)
  */
-export type GotConfig = Partial<GotJSONOptions>;
+export type GotConfig = Partial<GotOptions>;
 
 /**
  * @hidden
@@ -91,7 +94,7 @@ const handleError = (error: Error): Promise<never> => {
  * @hidden
  */
 export class Agent implements IAgent {
-  public got: GotInstance;
+  public got: Got;
   public gotConfig: GotConfig;
 
   constructor(gotConfig: GotConfig = {}) {
@@ -101,33 +104,41 @@ export class Agent implements IAgent {
 
   private requestWithBody(httpRequest: HttpRequest): Promise<HttpResponse> {
     const { body, method, timeout, url, header, query } = httpRequest;
-    return this.got(url, {
+    const Uri = new URL(url);
+    Uri.search = '?' + queryString.stringify(query);
+
+    //check body type to replace the proper values
+    //or convert body to buffer
+
+    // @ts-ignore
+    return this.got({
+      url: Uri,
       method,
       headers: header,
-      query,
-      json: true,
       throwHttpErrors: false,
       body,
       timeout,
       ...this.gotConfig,
     })
-      .then(response => toHttpResponse(httpRequest, response))
+      .then((response: Response<object>) => toHttpResponse(httpRequest, response))
       .catch(handleError);
   }
 
   private request(httpRequest: HttpRequest): Promise<HttpResponse> {
     const { method, timeout, url, header, query } = httpRequest;
-    return this.got(url, {
+    const Uri = new URL(url);
+    Uri.search = '?' + queryString.stringify(query);
+    // @ts-ignore
+    return this.got({
+      url: Uri,
       method,
       headers: header,
-      query,
       timeout,
       throwHttpErrors: false,
-      json: true,
       ...this.gotConfig,
     })
-      .then(response => toHttpResponse(httpRequest, response))
-      .catch(handleError);
+    .then((response: Response<object>) => toHttpResponse(httpRequest, response))
+    .catch(handleError);
   }
 
   public http(httpRequest: HttpRequest): Promise<HttpResponse> {
