@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/ideal-postcodes/core-node/compare/1.1.0...1.2.0) (2019-12-06)
+
+
+### Features
+
+* **Core-Interface:** Upgrade to 1.4.0 ([984e916](https://github.com/ideal-postcodes/core-node/commit/984e916))
+
 # [1.1.0](https://github.com/ideal-postcodes/core-node/compare/1.0.0...1.1.0) (2019-07-18)
 
 
