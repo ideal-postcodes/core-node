@@ -33,6 +33,7 @@ In depth client documentation can be found at [core-interface.ideal-postcodes.de
 
 - [Browser Client Repository](https://github.com/ideal-postcodes/core-browser)
 - [Bundled Browser Client Repository](https://github.com/ideal-postcodes/core-browser-bundled)
+- [Axios-backed Client Repository](https://github.com/ideal-postcodes/core-axios)
 
 ## Documentation
 
