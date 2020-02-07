@@ -9,6 +9,7 @@
 [![Dependency Status](https://david-dm.org/ideal-postcodes/core-node.svg)](https://david-dm.org/ideal-postcodes/core-node)
 [![npm version](https://badge.fury.io/js/%40ideal-postcodes%2Fcore-node.svg)](https://www.npmjs.com/package/@ideal-postcodes/core-node)
 [![install size](https://packagephobia.now.sh/badge?p=@ideal-postcodes/core-node)](https://packagephobia.now.sh/result?p=@ideal-postcodes/core-node)
+[![Release](https://github.com/ideal-postcodes/core-node/workflows/Release/badge.svg)](https://github.com/ideal-postcodes/core-node/actions)
 
 `@ideal-postcodes/core-node` is the Node.js client for api.ideal-postcodes.co.uk
 
