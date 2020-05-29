@@ -59,7 +59,7 @@ export const toHeader: ToHeader = gotHeaders =>
  */
 const toHttpResponse = (
   httpRequest: HttpRequest,
-  response: Response<object>
+  response: Response<any>
 ): HttpResponse => ({
   httpRequest,
   body: response.body,
