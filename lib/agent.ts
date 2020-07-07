@@ -1,4 +1,4 @@
-import got, { GotInstance, Response, GotJSONOptions } from "got";
+import got, { Got, Response, OptionsOfJSONResponseBody as GotJSONOptions } from "got";
 import {
   Agent as IAgent,
   HttpRequest,
@@ -91,7 +91,7 @@ const handleError = (error: Error): Promise<never> => {
  * @hidden
  */
 export class Agent implements IAgent {
-  public got: GotInstance;
+  public got: Got;
   public gotConfig: GotConfig;
 
   constructor(gotConfig: GotConfig = {}) {
@@ -104,8 +104,8 @@ export class Agent implements IAgent {
     return this.got(url, {
       method,
       headers: header,
-      query,
-      json: true,
+      searchParams: query,
+      responseType: "json",
       throwHttpErrors: false,
       body,
       timeout,
@@ -120,10 +120,10 @@ export class Agent implements IAgent {
     return this.got(url, {
       method,
       headers: header,
-      query,
+      searchParams: query,
       timeout,
       throwHttpErrors: false,
-      json: true,
+      responseType: "json",
       ...this.gotConfig,
     })
       .then(response => toHttpResponse(httpRequest, response))
