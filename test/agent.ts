@@ -65,12 +65,13 @@ describe("Agent", () => {
       await agent.http({ method, timeout, url, header, query });
 
       sinon.assert.calledOnce(stub);
+      // @ts-ignore
       sinon.assert.calledWithExactly(stub, url, {
         method,
         headers: header,
         throwHttpErrors: false,
-        query,
-        json: true,
+        searchParams: query,
+        responseType: "json",
         timeout,
       } as any);
     });
@@ -98,13 +99,14 @@ describe("Agent", () => {
       await agent.http({ body, method, timeout, url, header, query });
 
       sinon.assert.calledOnce(stub);
+      // @ts-ignore
       sinon.assert.calledWithExactly(stub, url, {
         method,
         throwHttpErrors: false,
-        json: true,
+        responseType: "json",
         body,
         headers: header,
-        query,
+        searchParams: query,
         timeout,
       } as any);
     });
@@ -133,12 +135,13 @@ describe("Agent", () => {
       assert.equal(apiResponse.httpStatus, 0);
 
       sinon.assert.calledOnce(stub);
+      // @ts-ignore
       sinon.assert.calledWithExactly(stub, url, {
         method: "GET",
         throwHttpErrors: false,
         headers: {},
-        query: {},
-        json: true,
+        searchParams: {},
+        responseType: "json",
         timeout: 1000,
       } as any);
     });
@@ -172,12 +175,13 @@ describe("Agent", () => {
         await agent.http({ method, timeout: 1000, url, header, query });
 
         sinon.assert.calledOnce(stub);
+        //@ts-ignore
         sinon.assert.calledWithExactly(stub, url, {
           method,
           headers: header,
           throwHttpErrors: false,
-          query,
-          json: true,
+          searchParams: query,
+          responseType: "json",
           timeout,
           retry,
         } as any);
@@ -205,13 +209,14 @@ describe("Agent", () => {
         await agent.http({ body, method, timeout: 1000, url, header, query });
 
         sinon.assert.calledOnce(stub);
+        // @ts-ignore
         sinon.assert.calledWithExactly(stub, url, {
           method,
           throwHttpErrors: false,
-          json: true,
+          responseType: "json",
           body,
           headers: header,
-          query,
+          searchParams: query,
           retry,
           timeout,
         } as any);
