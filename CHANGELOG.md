@@ -1,3 +1,21 @@
+# [2.0.0](https://github.com/ideal-postcodes/core-node/compare/1.3.0...2.0.0) (2020-07-07)
+
+
+### chore
+
+* **Node:** Drop support for node 8, Add node 14 ([001e2c4](https://github.com/ideal-postcodes/core-node/commit/001e2c4))
+
+
+### Features
+
+* **HTTP Client:** Upgrade Got to 11.X ([5beef3e](https://github.com/ideal-postcodes/core-node/commit/5beef3e))
+
+
+### BREAKING CHANGES
+
+* **Node:** Node 8 no longer supported
+* **HTTP Client:** Underlying Got HTTP agent upgraded to 11.X
+
 # [1.3.0](https://github.com/ideal-postcodes/core-node/compare/1.2.0...1.3.0) (2020-02-07)
 
 
