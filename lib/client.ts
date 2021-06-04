@@ -1,10 +1,6 @@
 import {
   Client as CoreInterface,
-  TLS,
-  API_URL,
-  VERSION,
-  TIMEOUT,
-  STRICT_AUTHORISATION,
+  defaults
 } from "@ideal-postcodes/core-interface";
 import { Agent, GotConfig } from "./agent";
 
@@ -57,14 +53,14 @@ export class Client extends CoreInterface {
   constructor(config: Config, gotConfig: GotConfig = {}) {
     const agent = new Agent(gotConfig);
     const header = { "User-Agent": USER_AGENT };
-    const tls = config.tls === undefined ? TLS : config.tls;
-    const baseUrl = config.baseUrl === undefined ? API_URL : config.baseUrl;
-    const version = config.version === undefined ? VERSION : config.version;
+    const tls = config.tls === undefined ? defaults.tls : config.tls;
+    const baseUrl = config.baseUrl === undefined ? defaults.baseUrl : config.baseUrl;
+    const version = config.version === undefined ? defaults.version : config.version;
     const strictAuthorisation =
       config.strictAuthorisation === undefined
-        ? STRICT_AUTHORISATION
+        ? defaults.strictAuthorisation
         : config.strictAuthorisation;
-    const timeout = config.timeout === undefined ? TIMEOUT : config.timeout;
+    const timeout = config.timeout === undefined ? defaults.timeout : config.timeout;
 
     const { api_key } = config;
     const interfaceConfig = {
