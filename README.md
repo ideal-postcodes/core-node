@@ -68,7 +68,7 @@ const client = new Client({ api_key: "iddqd" });
 #### Use
 
 ```javascript
-import { lookupPostcode } from "@ideal-postcodes/core-interface";
+import { lookupPostcode } from "@ideal-postcodes/core-node";
 
 const addresses = await lookupPostcode({ client, postcode: "SW1A2AA" });
 ```
@@ -76,7 +76,7 @@ const addresses = await lookupPostcode({ client, postcode: "SW1A2AA" });
 #### Catch Errors
 
 ```javascript
-import { lookupAddress, errors } from "@ideal-postcodes/core-interface";
+import { lookupAddress, errors } from "@ideal-postcodes/core-node";
 const { IdpcRequestFailedError } = errors;
 
 try {
@@ -141,7 +141,7 @@ For a complete list of client methods, including low level resource methods, ple
 Return addresses associated with a given `postcode`
 
 ```javascript
-import { lookupPostcode } from "@ideal-postcodes/core-interface";
+import { lookupPostcode } from "@ideal-postcodes/core-node";
 const postcode = "id11qd";
 
 const addresses = await lookupPostcode({ client, postcode });
@@ -154,7 +154,7 @@ const addresses = await lookupPostcode({ client, postcode });
 Return addresses associated with a given `query`
 
 ```javascript
-import { lookupAddress } from "@ideal-postcodes/core-interface";
+import { lookupAddress } from "@ideal-postcodes/core-node";
 const query = "10 downing street sw1a";
 
 const addresses = await lookupAddress({ client, query });
@@ -169,7 +169,7 @@ Return address for a given `udprn`
 Invalid UDPRN will return `null`
 
 ```javascript
-import { lookupUdprn } from "@ideal-postcodes/core-interface";
+import { lookupUdprn } from "@ideal-postcodes/core-node";
 const udprn = 23747771;
 const address = await lookupUdprn({ client, udprn });
 ```
