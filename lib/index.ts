@@ -9,7 +9,8 @@
 export * from "@ideal-postcodes/core-interface";
 
 /**
- * Export HTTP Client with HTTP agent that supports `fetch`
+ * Export HTTP Client with HTTP agent that supports got HTTP Client
  */
 export { Client } from "./client";
+
 export { Agent } from "./agent";
