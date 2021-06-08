@@ -18,6 +18,26 @@ these from the library and inject the client. E.g.
 Instead retrieve these from teh library and inject the client. E.g.
 `client.lookupPostcode` becomes `lookupPostcode(client, ...)`
 
+# [3.0.0](https://github.com/ideal-postcodes/core-node/compare/2.1.0...3.0.0) (2021-06-08)
+
+
+### Features
+
+* **Core Interface:** Update to Version 2 ([9258ecf](https://github.com/ideal-postcodes/core-node/commit/9258ecf))
+
+
+### BREAKING CHANGES
+
+* **Core Interface:** - Package now exports a `defaults` object
+- Client.defaults has been removed
+- All client config is now stored in `client.config`
+- All resources have been removed from the client. Instead retrieve
+these from the library and inject the client. E.g.
+`client.postcodes.retrieve` becomes `postcodes.retrieve(client, ...)`
+- Helper methods (like lookupPostcode, ping) have been removed from the client.
+Instead retrieve these from teh library and inject the client. E.g.
+`client.lookupPostcode` becomes `lookupPostcode(client, ...)`
+
 # [2.1.0](https://github.com/ideal-postcodes/core-node/compare/2.0.0...2.1.0) (2020-08-07)
 
 
