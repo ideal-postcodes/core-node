@@ -77,12 +77,11 @@ const addresses = await lookupPostcode({ client, postcode: "SW1A2AA" });
 
 ```javascript
 import { lookupAddress, errors } from "@ideal-postcodes/core-node";
-const { IdpcRequestFailedError } = errors;
 
 try {
   await lookupAddress({ client, query: "10 downing street" });
 } catch (error) {
-  if (error instanceof IdpcRequestFailedError) {
+  if (error instanceof errors.IdpcRequestFailedError) {
     // IdpcRequestFailedError indicates a 402 response code
     // Possibly the key balance has been depleted
   }
