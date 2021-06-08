@@ -68,18 +68,20 @@ const client = new Client({ api_key: "iddqd" });
 #### Use
 
 ```javascript
-const addresses = await client.lookupPostcode({ postcode: "SW1A2AA" });
+import { lookupPostcode } from "@ideal-postcodes/core-node";
+
+const addresses = await lookupPostcode({ client, postcode: "SW1A2AA" });
 ```
 
 #### Catch Errors
 
 ```javascript
-const { IdpcRequestFailedError } = Client.errors;
+import { lookupAddress, errors } from "@ideal-postcodes/core-node";
 
 try {
-  await client.lookupAddress({ query: "10 downing street" });
+  await lookupAddress({ client, query: "10 downing street" });
 } catch (error) {
-  if (error instanceof IdpcRequestFailedError) {
+  if (error instanceof errors.IdpcRequestFailedError) {
     // IdpcRequestFailedError indicates a 402 response code
     // Possibly the key balance has been depleted
   }
@@ -138,9 +140,10 @@ For a complete list of client methods, including low level resource methods, ple
 Return addresses associated with a given `postcode`
 
 ```javascript
+import { lookupPostcode } from "@ideal-postcodes/core-node";
 const postcode = "id11qd";
 
-const addresses = await client.lookupPostcode({ postcode });
+const addresses = await lookupPostcode({ client, postcode });
 ```
 
 [Method options](https://core-interface.ideal-postcodes.dev/interfaces/lookuppostcodeoptions.html)
@@ -150,9 +153,10 @@ const addresses = await client.lookupPostcode({ postcode });
 Return addresses associated with a given `query`
 
 ```javascript
+import { lookupAddress } from "@ideal-postcodes/core-node";
 const query = "10 downing street sw1a";
 
-const addresses = await client.lookupAddress({ query });
+const addresses = await lookupAddress({ client, query });
 ```
 
 [Method options](https://core-interface.ideal-postcodes.dev/interfaces/lookupaddressoptions.html)
@@ -164,9 +168,9 @@ Return address for a given `udprn`
 Invalid UDPRN will return `null`
 
 ```javascript
+import { lookupUdprn } from "@ideal-postcodes/core-node";
 const udprn = 23747771;
-
-const address = await client.lookupUdprn({ udprn });
+const address = await lookupUdprn({ client, udprn });
 ```
 
 [Method options](https://core-interface.ideal-postcodes.dev/interfaces/lookupudprnoptions.html)

@@ -2,9 +2,9 @@ import * as sinon from "sinon";
 import { assert } from "chai";
 import { Agent, toHeader } from "../lib/agent";
 import { Response } from "got";
-import { Client } from "../lib/client";
+import { errors } from "../lib";
 
-const { IdealPostcodesError } = Client.errors;
+const { IdealPostcodesError } = errors;
 
 describe("Agent", () => {
   let agent: Agent;
