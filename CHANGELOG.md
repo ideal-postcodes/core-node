@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/ideal-postcodes/core-node/compare/3.0.0...3.0.1) (2021-07-19)
+
+
+### Bug Fixes
+
+* **Deps:** Bump core-interface ([a50c405](https://github.com/ideal-postcodes/core-node/commit/a50c405))
+
 # [3.0.0](https://github.com/ideal-postcodes/core-node/compare/2.1.0...3.0.0) (2021-06-08)
 
 
