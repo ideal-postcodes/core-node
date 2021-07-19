@@ -63,7 +63,7 @@ import { Client } from "@ideal-postcodes/core-node"
 const client = new Client({ api_key: "iddqd" });
 ```
 
-[Configuration options](https://core-interface.ideal-postcodes.dev/interfaces/config.html)
+[Configuration options](https://core-interface.ideal-postcodes.dev/interfaces/client.config)
 
 #### Use
 
@@ -141,12 +141,13 @@ Return addresses associated with a given `postcode`
 
 ```javascript
 import { lookupPostcode } from "@ideal-postcodes/core-node";
+
 const postcode = "id11qd";
 
 const addresses = await lookupPostcode({ client, postcode });
 ```
 
-[Method options](https://core-interface.ideal-postcodes.dev/interfaces/lookuppostcodeoptions.html)
+[Method options](https://core-interface.ideal-postcodes.dev/interfaces/helper_methods.lookuppostcodeoptions)
 
 #### Search for an Address
 
@@ -154,12 +155,13 @@ Return addresses associated with a given `query`
 
 ```javascript
 import { lookupAddress } from "@ideal-postcodes/core-node";
+
 const query = "10 downing street sw1a";
 
 const addresses = await lookupAddress({ client, query });
 ```
 
-[Method options](https://core-interface.ideal-postcodes.dev/interfaces/lookupaddressoptions.html)
+[Method options](https://core-interface.ideal-postcodes.dev/interfaces/helper_methods.lookupaddressoptions)
 
 #### Search for an Address by UDPRN
 
@@ -169,11 +171,13 @@ Invalid UDPRN will return `null`
 
 ```javascript
 import { lookupUdprn } from "@ideal-postcodes/core-node";
+
 const udprn = 23747771;
+
 const address = await lookupUdprn({ client, udprn });
 ```
 
-[Method options](https://core-interface.ideal-postcodes.dev/interfaces/lookupudprnoptions.html)
+[Method options](https://core-interface.ideal-postcodes.dev/interfaces/helper_methods.lookupudprnoptions)
 
 ## Test
 
