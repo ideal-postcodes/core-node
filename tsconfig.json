@@ -1,7 +1,13 @@
 {
   "extends": "@cablanchard/tsconfig",
   "compilerOptions": {
-    "outDir": "dist"
+    "outDir": "dist",
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true
   },
   "include": ["lib/**/*"]
 }

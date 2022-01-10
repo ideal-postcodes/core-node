@@ -1,10 +1,7 @@
 import { assert } from "chai";
 import { Client, Config } from "../lib/client";
 import { Agent } from "../lib/agent";
-import {
-  defaults,
-  Config as InterfaceConfig,
-} from "../lib";
+import { defaults, Config as InterfaceConfig } from "../lib";
 
 describe("Client", () => {
   describe("instantiation", () => {
@@ -20,7 +17,10 @@ describe("Client", () => {
       assert.equal(client.config.tls, defaults.tls);
       assert.equal(client.config.baseUrl, defaults.baseUrl);
       assert.equal(client.config.version, defaults.version);
-      assert.equal(client.config.strictAuthorisation, defaults.strictAuthorisation);
+      assert.equal(
+        client.config.strictAuthorisation,
+        defaults.strictAuthorisation
+      );
       assert.equal(client.config.timeout, defaults.timeout);
     });
 
@@ -51,7 +51,9 @@ describe("Client", () => {
     });
 
     it("assigns got config", () => {
-      const retry = 2;
+      const retry = {
+        limit: 2,
+      };
       const customClient = new Client({ api_key }, { retry });
       assert.deepEqual((customClient.config.agent as any).gotConfig, { retry });
     });

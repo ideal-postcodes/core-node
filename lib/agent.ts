@@ -65,7 +65,7 @@ const toHttpResponse = (
   body: response.body,
   httpStatus: response.statusCode || 0,
   header: toHeader(response.headers),
-  metadata: { response },
+  metadata: {response},
 });
 
 /**
@@ -78,7 +78,7 @@ const handleError = (error: Error): Promise<never> => {
   const idpcError = new IdealPostcodesError({
     message: `[${error.name}] ${error.message}`,
     httpStatus: 0,
-    metadata: { got: error },
+    metadata: {got: error},
   });
   return Promise.reject(idpcError);
 };
@@ -100,7 +100,7 @@ export class Agent implements IAgent {
   }
 
   private requestWithBody(httpRequest: HttpRequest): Promise<HttpResponse> {
-    const { body, method, timeout, url, header, query } = httpRequest;
+    const {body, method, timeout, url, header, query} = httpRequest;
     return this.got(url, {
       method,
       headers: header,
@@ -108,7 +108,9 @@ export class Agent implements IAgent {
       responseType: "json",
       throwHttpErrors: false,
       body,
-      timeout,
+      timeout: {
+        request: timeout
+      },
       ...this.gotConfig,
     })
       .then(response => toHttpResponse(httpRequest, response))
@@ -116,12 +118,14 @@ export class Agent implements IAgent {
   }
 
   private request(httpRequest: HttpRequest): Promise<HttpResponse> {
-    const { method, timeout, url, header, query } = httpRequest;
+    const {method, timeout, url, header, query} = httpRequest;
     return this.got(url, {
       method,
       headers: header,
       searchParams: query,
-      timeout,
+      timeout: {
+        request: timeout
+      },
       throwHttpErrors: false,
       responseType: "json",
       ...this.gotConfig,
