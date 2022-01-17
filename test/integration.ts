@@ -1,7 +1,10 @@
+import { fileURLToPath } from 'url'
 import { assert } from "chai";
 import { Client } from "../lib/client";
 import { errors, ping, lookupPostcode } from "../lib";
 import { loadHttpFixtures } from "./fixtures/index";
+
+const __filename = fileURLToPath(import.meta.url);
 
 loadHttpFixtures(__filename);
 

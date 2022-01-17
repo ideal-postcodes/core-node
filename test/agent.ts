@@ -1,10 +1,13 @@
-import * as sinon from "sinon";
+import * as sinonDefault from "sinon";
 import { assert } from "chai";
 import { Agent, toHeader } from "../lib/agent";
 import { Response } from "got";
 import { errors } from "../lib";
 
 const { IdealPostcodesError } = errors;
+
+//@ts-ignore
+const sinon = sinonDefault.default; 
 
 describe("Agent", () => {
   let agent: Agent;
@@ -20,7 +23,9 @@ describe("Agent", () => {
     });
 
     it("assigns GOT config", () => {
-      const retry = 2;
+      const retry = {
+        limit: 2
+      };
       const a = new Agent({ retry });
       assert.deepEqual({ retry }, a.gotConfig);
     });
@@ -72,7 +77,9 @@ describe("Agent", () => {
         throwHttpErrors: false,
         searchParams: query,
         responseType: "json",
-        timeout,
+        timeout: {
+            request: timeout
+        },
       } as any);
     });
 
@@ -107,7 +114,9 @@ describe("Agent", () => {
         body,
         headers: header,
         searchParams: query,
-        timeout,
+        timeout: {
+            request: timeout
+        },
       } as any);
     });
 
@@ -142,13 +151,19 @@ describe("Agent", () => {
         headers: {},
         searchParams: {},
         responseType: "json",
-        timeout: 1000,
+        timeout: {
+            request: 1000
+        }
       } as any);
     });
 
     describe("GOT Configuration", () => {
-      const timeout = 2000;
-      const retry = 2;
+      const timeout = {
+        request: 2000
+      };
+      const retry = {
+        limit: 2
+      };
 
       beforeEach(() => {
         agent = new Agent({ timeout, retry });

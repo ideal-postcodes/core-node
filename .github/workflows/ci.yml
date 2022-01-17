@@ -9,7 +9,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x]
+        node-version: [14.x, 15.x, 16.x]
 
     steps:
       - uses: actions/checkout@v1
@@ -37,7 +37,7 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Coverage
-        run: npm run coverage
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+#      - name: Coverage
+#        run: npm run coverage
+#        env:
+#          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

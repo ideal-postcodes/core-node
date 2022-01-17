@@ -1,6 +1,12 @@
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
 import nock from "nock";
 import { resolve, basename } from "path";
 import { writeFile } from "fs";
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename);
+
 
 /**
  * loadHttpFixtures
