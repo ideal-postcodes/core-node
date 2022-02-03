@@ -83,11 +83,18 @@
     "Ideal Postcodes"
   ],
   "release": {
-    "extends": "@cablanchard/semantic-release/dist/npm"
+    "extends": "@cablanchard/semantic-release/dist/npm",
+    "branches": [
+      "master",
+      {
+        "name": "beta",
+        "prerelease": true
+      }
+    ]
   },
   "license": "MIT",
   "dependencies": {
-    "@ideal-postcodes/core-interface": "~2.0.2",
+    "@ideal-postcodes/core-interface": "3.0.0-beta.1",
     "got": "~11.8.0"
   },
   "devDependencies": {
