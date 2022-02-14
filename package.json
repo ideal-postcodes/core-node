@@ -87,7 +87,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@ideal-postcodes/core-interface": "~2.0.2",
+    "@ideal-postcodes/core-interface": "~3.0.0",
     "got": "~11.8.0"
   },
   "devDependencies": {
