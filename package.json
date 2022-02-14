@@ -1,6 +1,6 @@
 {
   "name": "@ideal-postcodes/core-node",
-  "version": "4.0.0-beta.1",
+  "version": "4.0.0",
   "description": "Node.js client for api.ideal-postcodes.co.uk",
   "author": {
     "name": "Ideal Postcodes",
