@@ -1,3 +1,15 @@
+# [4.0.0-beta.1](https://github.com/ideal-postcodes/core-node/compare/3.0.1...4.0.0-beta.1) (2022-02-03)
+
+
+### Features
+
+* **Core-Interface:** Update to 3.0 ([de5867a](https://github.com/ideal-postcodes/core-node/commit/de5867a))
+
+
+### BREAKING CHANGES
+
+* **Core-Interface:** Updates Core-Interface to 3.0.0
+
 ## [3.0.1](https://github.com/ideal-postcodes/core-node/compare/3.0.0...3.0.1) (2021-07-19)
 
 
