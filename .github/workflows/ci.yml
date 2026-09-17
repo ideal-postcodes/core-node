@@ -34,5 +34,9 @@ jobs:
 
       - name: Coverage
         run: npm run coverage
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Upload coverage
+        uses: codecov/codecov-action@v7
+        with:
+          files: coverage.lcov
+          token: ${{ secrets.CODECOV_TOKEN }}
