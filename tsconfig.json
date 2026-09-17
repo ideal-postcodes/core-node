@@ -1,7 +1,10 @@
 {
   "extends": "@cablanchard/tsconfig",
   "compilerOptions": {
-    "outDir": "dist"
+    "rootDir": "lib",
+    "outDir": "dist",
+    "types": ["node", "mocha"],
+    "ignoreDeprecations": "6.0"
   },
   "include": ["lib/**/*"]
 }
