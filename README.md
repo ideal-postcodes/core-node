@@ -17,7 +17,7 @@ Our JavaScript client implements a common interface defined at [@ideal-postcodes
 
 High level client documentation can be found at [core-interface](https://github.com/ideal-postcodes/core-interface/blob/master/README.md).
 
-In depth client documentation can be found at [core-interface.ideal-postcodes.dev](https://core-interface.ideal-postcodes.dev).
+In depth client documentation can be found in the [core-interface README](https://github.com/ideal-postcodes/core-interface#documentation).
 
 `@ideal-postcodes/core-node` is tested against [all maintained, stable releases](https://nodejs.org/en/about/releases/).
 
@@ -26,7 +26,7 @@ In depth client documentation can be found at [core-interface.ideal-postcodes.de
 - [Configuration & Usage](#configuration--usage)
 - [Quickstart](#quickstart)
 - [Client Documentation](https://github.com/ideal-postcodes/core-interface/blob/master/README.md)
-- [In Depth Client Documentation](https://core-interface.ideal-postcodes.dev/#documentation)
+- [In Depth Client Documentation](https://github.com/ideal-postcodes/core-interface#documentation)
 - [npm Module](https://www.npmjs.com/package/@ideal-postcodes/core-node)
 - [GitHub Repository](https://github.com/ideal-postcodes/core-node)
 
@@ -63,7 +63,7 @@ import { Client } from "@ideal-postcodes/core-node"
 const client = new Client({ api_key: "iddqd" });
 ```
 
-[Configuration options](https://core-interface.ideal-postcodes.dev/interfaces/client.config)
+[Configuration options](https://github.com/ideal-postcodes/core-interface/blob/master/lib/client.ts)
 
 #### Use
 
@@ -133,7 +133,7 @@ The client exposes a number of simple methods to get at the most common tasks wh
 - [Search for an Address](#search-for-an-address)
 - [Search for an Address by UDPRN](#search-for-an-address-by-udprn)
 
-For a complete list of client methods, including low level resource methods, please see the [core-interface documentation](https://core-interface.ideal-postcodes.dev/#documentation)
+For a complete list of client methods, including low level resource methods, please see the [core-interface documentation](https://github.com/ideal-postcodes/core-interface#documentation)
 
 #### Lookup a Postcode
 
@@ -147,7 +147,7 @@ const postcode = "id11qd";
 const addresses = await lookupPostcode({ client, postcode });
 ```
 
-[Method options](https://core-interface.ideal-postcodes.dev/interfaces/helper_methods.lookuppostcodeoptions)
+[Method options](https://github.com/ideal-postcodes/core-interface/blob/master/lib/helpers.ts)
 
 #### Search for an Address
 
@@ -161,7 +161,7 @@ const query = "10 downing street sw1a";
 const addresses = await lookupAddress({ client, query });
 ```
 
-[Method options](https://core-interface.ideal-postcodes.dev/interfaces/helper_methods.lookupaddressoptions)
+[Method options](https://github.com/ideal-postcodes/core-interface/blob/master/lib/helpers.ts)
 
 #### Search for an Address by UDPRN
 
@@ -177,7 +177,7 @@ const udprn = 23747771;
 const address = await lookupUdprn({ client, udprn });
 ```
 
-[Method options](https://core-interface.ideal-postcodes.dev/interfaces/helper_methods.lookupudprnoptions)
+[Method options](https://github.com/ideal-postcodes/core-interface/blob/master/lib/helpers.ts)
 
 ## Test
 
